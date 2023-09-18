@@ -84,6 +84,14 @@ namespace Serialization
             deserialized = JsonSerializer.Deserialize<Product>(serialized, options)!;
             Console.WriteLine($"{deserialized.RoundTrips}");
             // 2
+
+            // Try serialize to Utf8 bytes
+
+            var serializedBytes = JsonSerializer.SerializeToUtf8Bytes(product);
+            Console.WriteLine(serialized);
+
+            var deserializesObject = JsonSerializer.Deserialize<Product>(serialized);
+            Console.WriteLine($"{deserialized.RoundTrips}");
         }
     }
 }
